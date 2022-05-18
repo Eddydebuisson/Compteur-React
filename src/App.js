@@ -1,25 +1,48 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  
+   const [counter, setCounter] = useState(0);
+
+   function increment() {
+
+     setCounter( counter => counter +1);
+   }
+
+   function decrement(){
+    setCounter( counter =>  counter<=0 ? counter= 0 : counter-1);
+   }
+
+   function reset(){
+    setCounter( counter => counter=0);
+   }
+
+
+  return(
+      <div className="counter">
+      <h1>REACT COMPTEUR :</h1>
+      <span className="counter__output">{counter}</span>
+      <div className="btn__container">
+        <button className="neon" onClick={increment}>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>+</button>
+        <button className="neon" onClick={decrement}>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>-</button>
+        <button className="neon" onClick={reset}>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>Reset</button>
+      </div>
     </div>
   );
+
 }
 
 export default App;
